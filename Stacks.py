@@ -41,7 +41,16 @@ class Stacks:
     # Leetcode Problem No. 2
     @staticmethod
     def is_valid(string) -> bool:
-
+        stack_open = []
+        dict_ = {')': '(', ']': '[', '}': '{'}
+        for char in string:
+            if char == '(' or char == '[' or char == '{':
+                stack_open.append(char)
+            elif stack_open and stack_open[-1] == dict_[char]:
+                stack_open.pop()
+            else:
+                return False
+        return True
 
 
 # LeetCode Problem 3
@@ -74,17 +83,17 @@ if __name__ == '__main__':
     # ["MinStack", "push", "push", "push", "getMin", "pop", "top", "getMin"]
     # [[], [-2], [0], [-3], [], [], [], []]
 
-    stack.push(-2)
-    stack.push(0)
-    stack.push(-3)
-    print(stack.getMin())
-    stack.pop()
-    stack.getArray()
-    stack.top()
-    print(stack.getMin())
-    stack.getArray()
-    # stacks = Stacks()
-    # print(stacks.is_valid("())"))
+    # stack.push(-2)
+    # stack.push(0)
+    # stack.push(-3)
+    # print(stack.getMin())
+    # stack.pop()
+    # stack.getArray()
+    # stack.top()
+    # print(stack.getMin())
+    # stack.getArray()
+    stacks = Stacks()
+    print(stacks.is_valid("())"))
 
 
 
